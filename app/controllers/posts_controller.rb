@@ -27,6 +27,27 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
   end
 
+  def update
+   @post = Post.find(params[:id])
+     if @post.update(post_params)
+       flash[:success] = "Post '#{@post.title}' has been Successfully Updated !!!"
+       redirect_to post_path(@post)
+     else
+       flash[:danger] = "Post '#{@post.title}' Did not Update, Try Again !!!"
+       render 'edit'
+     end
+   end
+
+  def destroy
+   @post = Post.find(params[:id])
+     if @post.destroy
+       flash[:success] = "Post '#{@post.title}' has been Successfully Deleted !!!"
+       redirect_to posts_path
+     else
+       flash[:danger] = "Post '#{@post.title}' Did not Deleted.. !!!"
+     end
+   end
+
   private
 
   def post_params

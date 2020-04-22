@@ -1,3 +1,72 @@
-// Place all the styles related to the posts controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import 'bootstrap';
+@import 'variables';
+@import 'mixins';
+
+$font-primary: 'Exo 2', sans-serif;
+$primary: #f8b739;
+
+
+h1 {
+	font-family: $font-primary !important;
+}
+
+body{
+	font-family: $font-primary;
+	font-size: 14px;
+	line-height: 1.8;
+	font-weight: normal;
+	background: #fafafa;
+	color: lighten($black,50%);
+}
+
+a {
+	transition: .3s all ease;
+	color: $primary;
+	&:hover, &:focus {
+		text-decoration: none !important;
+		outline: none !important;
+		box-shadow: none;
+	}
+}
+button {
+	transition: .3s all ease;
+	&:hover, &:focus {
+		text-decoration: none !important;
+		outline: none !important;
+		box-shadow: none !important;
+	}
+}
+
+h1, h2, h3, h4, h5,
+.h1, .h2, .h3, .h4, .h5 {
+	line-height: 1.5;
+	font-weight: 400;
+	font-family: $font-primary;
+	color: $black;
+}
+
+.cardStyle {
+    display: block;
+    transitionDuration: 0.3s;
+}
+
+.trigger {
+padding: 1px 10px;
+font-size: 12px;
+font-weight: 400;
+border-radius: 10px;
+background-color: #eee;
+color: #212121 !important;
+display: inline-block;
+margin: 2px 5px;
+}
+
+.hoverable, .trigger {
+transition: box-shadow 0.55s;
+box-shadow: 0;
+}
+
+.hoverable:hover, .trigger:hover {
+transition: box-shadow 0.45s;
+box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
