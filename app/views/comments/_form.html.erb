@@ -1,0 +1,20 @@
+<div class="mui-container-fluid">
+  <div class="mui-row">
+      <div class="mui-col-xs-12 mui-col-md-10 mx-auto">
+          <div class="mui-panel my-3 justify-content">
+            <h3><strong>Post A Comment</strong></h3>
+            <%= form_for ([@post, @comment]), :html => {:class => 'mui-form'} do |f|  %>
+                <div class="mui-textfield">
+                  <%= f.text_field(:author_name, {:placeholder => 'Enter Name', :required => true}) %>
+                </div>
+                <div class="mui-textfield">
+                  <%= f.text_area(:body, {:placeholder => 'Your Comment', :required => true}) %>
+                </div>
+                <p>
+                  <%= f.submit({:class => 'mui-btn mui-btn--primary'}) %>
+                </p>
+            <% end %>
+          </div>
+      </div>
+    </div>
+</div>

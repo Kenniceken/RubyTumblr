@@ -18,6 +18,7 @@
       </div>
   </div>
 </div>
-
-
 <br>
+<h3>Comments (<%= @post.comments.size %>) </h3>
+<%= render partial: 'posts/comment', collection: @post.comments.reverse %>
+<%= render partial: 'comments/form' %>
