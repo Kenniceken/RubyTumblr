@@ -1,0 +1,21 @@
+<nav id="sidebar">
+				<div class="p-4 pt-5">
+		  		<a class="img logo rounded-circle mb-5" <%= link_to image_tag("logo.png", alt: "logo"), '/', class: 'img' %></a>
+				<ul class="list-unstyled components mb-5">
+          <li class="active">
+            <%= link_to "Home", root_path %>
+          </li>
+          <li class="">
+            <%= link_to "Posts", posts_path %>
+          </li>
+          <li class="">
+            <%= link_to "Logout", root_path %>
+          </li>
+        </ul>
+
+					<div class="footer">
+            <%= render "layouts/footer" %>
+					</div>
+
+				  </div>
+			</nav>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>RubyBlog</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <%= stylesheet_link_tag 'application','https://fonts.googleapis.com/css2?family=Exo+2:wght@100;200;300;600;700;800&family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application','https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css' , media: 'all', 'data-turbolinks-track': 'reload'%>
+    <%= stylesheet_link_tag 'https://cdnjs.cloudflare.com/ajax/libs/muicss/0.9.41/css/mui.min.css', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/muicss/0.9.41/js/mui.min.js', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div class="wrapper d-flex align-items-stretch">
+       <%= render "layouts/sidebar" %>
+
+       <div id="content" class="p-4 p-md-5">
+         <%= render "layouts/header" %>
+         <p class="mb-4">
+           <% flash.each do |key, value| %>
+               <span class="<%= flash_class(key) %>">
+                     <%= value %>
+               </span>
+           <% end %>
+           <%= yield %>
+         </p>
+       </div>
+     </div>
+
+    <%= javascript_include_tag "jquery.min.js" %>
+    <%= javascript_include_tag "popper.js" %>
+    <%= javascript_include_tag "bootstrap.min.js" %>
+    <%= javascript_include_tag "main" %>
+  </body>
+</html>

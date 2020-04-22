@@ -1,0 +1,17 @@
+<div class="mui-container-fluid">
+  <div class="mui-row">
+      <div class="mui-col-xs-12 mui-col-md-10 mx-auto">
+          <div class="mui-panel my-3 justify-content">
+            <p><strong>Comment By:</strong> <span class="text-primary"><%= comment.author_name %></span></p>
+            <p class="comment"><%= comment.body %>
+              <br>
+              <span class="float-right mt-3">
+                <% if comment.created_at != nil %>
+                  Posted: <%= time_ago_in_words(comment.created_at) %> ago
+                <% end %></span>
+            </p>
+          </div>
+          <div class="mui-divider"></div>
+      </div>
+    </div>
+</div>
