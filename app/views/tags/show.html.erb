@@ -1,0 +1,14 @@
+
+<div class="mui-container-fluid">
+  <h1>Posts Tagged With <%= @tag.name %></h1>
+
+  <div class="mui-row">
+      <% @tag.posts.each do |post| %>
+        <div class="mui-col-xs-12 mui-col-md-4 cardStyle">
+            <div class="mui-panel my-3 text-center">
+              <%= link_to post.title, post_path(post), class: ' text-center post_title' %>
+            </div>
+        </div>
+      <% end %>
+  </div>
+</div>

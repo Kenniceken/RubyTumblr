@@ -5,6 +5,15 @@
       <div class="mui-col-xs-12 mui-col-md-10 mx-auto">
           <div class="mui-panel my-3 justify-content">
             <h1><%= @post.title %></h1>
+            <p>
+              Tags:
+
+                <% @post.tags.each do |tag| %>
+                  <span class="trigger blue lighten-4">
+                    <%= link_to tag.name, tag_path(tag) %>
+                  </span>
+                <% end %>
+            </p>
             <p><%= @post.body %></p>
             <br>
             <div class="mui-divider"></div>
