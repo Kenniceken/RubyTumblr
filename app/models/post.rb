@@ -2,6 +2,9 @@ class Post < ApplicationRecord
   has_many :comments
   has_many :taggings
   has_many :tags, through: :taggings
+  has_attached_file :image
+  has_attached_file :image, style: { medium: "300x300>", thumb: "640x64>"  }
+  validates_attachment_content_type :image, content_type: /^image\/(png|gif|jpeg|jpg)/
 
   def tag_list
     self.tags.collect do |tag|
