@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :require_login, except: [:index, :show]
   def index
     @posts = Post.order('created_at')
   end
@@ -16,7 +17,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     if @post.save
-      flash[:success] = "Post '#{@post.title}' has been Created !!!"
+      #flash[:success] = "Post '#{@post.title}' has been Created !!!"
       redirect_to @post
     else
       render new

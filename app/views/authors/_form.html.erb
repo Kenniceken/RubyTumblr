@@ -1,0 +1,41 @@
+<%= form_with(model: author, local: true, :class => 'mui-form') do |form| %>
+  <% if author.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(author.errors.count, "error") %> prohibited this author from being saved:</h2>
+
+      <ul>
+      <% author.errors.full_messages.each do |message| %>
+        <li><div class="alert alert-danger" role="alert"> <<%= message %></li></div>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="mui-textfield">
+    <%= form.label :Name %>
+    <%= form.text_field :name, id: :name, required: true  %>
+  </div>
+
+  <div class="mui-textfield">
+    <%= form.label :Username %>
+    <%= form.text_field :username, id: :username, required: true  %>
+  </div>
+
+  <div class="mui-textfield">
+    <%= form.label :Email %>
+    <%= form.text_field :email, id: :author_email, required: true %>
+  </div>
+
+  <div class="mui-textfield">
+    <%= form.label :Password %>
+    <%= form.password_field :password, id: :author_password, required: true %>
+  </div>
+
+  <div class="mui-textfield">
+    <%= form.label :password_confirmation %>
+    <%= form.password_field :password_confirmation, id: :author_password_confirmation, required: :true %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit( 'Register', {:class => 'mui-btn mui-btn--primary'}) %>
+  </div>
+<% end %>

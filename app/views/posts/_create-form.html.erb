@@ -1,7 +1,7 @@
 <% if @post.errors.any? %>
-<% @post.errors.full_messages.each do |msg| %>
-    <div class="alert alert-danger" role="alert"> <%= msg %> </div>
-<% end %>
+  <% @post.errors.full_messages.each do |msg| %>
+      <div class="alert alert-danger" role="alert"> <%= msg %> </div>
+  <% end %>
 <% end %>
   <%= form_for @post, :html => {multipart: true, :class => 'mui-form'} do |f|  %>
       <div class="mui-textfield">

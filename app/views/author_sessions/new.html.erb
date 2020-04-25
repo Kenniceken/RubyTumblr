@@ -1,0 +1,26 @@
+<div class="mui-container-fluid">
+  <h1>Author Login</h1>
+  <div class="mui-row">
+    <div class="mui-col-xs-12 mui-col-md-7 mx-auto">
+        <div class="mui-panel my-3 justify-content">
+          <%= form_tag author_sessions_path, method: :post, :html => {multipart: true, :class => 'mui-form'} do %>
+            <div class="mui-textfield">
+               <%= label_tag :email %>
+              <%= text_field_tag :email %>
+              <br/>
+            </div>
+            <div class="mui-textfield">
+              <%= label_tag :password %>
+              <%= password_field_tag :password %>
+              <br/>
+            </div>
+            <div class="actions">
+              <%= submit_tag("Login", {:class => 'mui-btn mui-btn--primary'}) %>
+            </div>
+          <% end %>
+
+          <%= link_to 'Go Back', posts_path, {:class => 'mui-btn mui-btn--raised'} %>
+        </div>
+    </div>
+  </div>
+</div>

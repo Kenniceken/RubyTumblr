@@ -3,7 +3,8 @@ class Post < ApplicationRecord
   has_many :taggings
   has_many :tags, through: :taggings
   has_attached_file :image
-  has_attached_file :image, style: { medium: "300x300>", thumb: "640x64>"  }
+  has_attached_file :image, style: { medium: "300x300>", thumb: "64x64>"  }
+  has_attached_file :image, :default_url => ":style/missing_avatar.jpg", style: { medium: "300x300>", thumb: "50x50" }
   validates_attachment_content_type :image, content_type: /^image\/(png|gif|jpeg|jpg)/
 
   def tag_list

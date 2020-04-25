@@ -1,7 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RubyBlog</title>
+    <title>
+    <% if logged_in? %>
+       <%= "#{current_user.name}" %>
+     <% else %>
+       RubyBlog
+     <% end %>
+    </title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -20,14 +26,16 @@
 
        <div id="content" class="p-4 p-md-5">
          <%= render "layouts/header" %>
-         <p class="mb-4">
+         <div class="mb-4">
            <% flash.each do |key, value| %>
                <span class="<%= flash_class(key) %>">
                      <%= value %>
                </span>
+               <br>
            <% end %>
+            <br>
            <%= yield %>
-         </p>
+         </div>
        </div>
      </div>
 

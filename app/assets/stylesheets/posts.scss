@@ -48,6 +48,15 @@ h1, h2, h3, h4, h5,
 .cardStyle {
     display: block;
     transitionDuration: 0.3s;
+		height: 490px !important;
+}
+
+.card-img-top {
+	height: 250px !important;
+	width: 100%;
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-attachment: fixed;
 }
 
 .trigger {
@@ -69,4 +78,10 @@ box-shadow: 0;
 .hoverable:hover, .trigger:hover {
 transition: box-shadow 0.45s;
 box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.BloPostImg {
+	border-radius: 20px;
+	height: 50%;
+	width: 50%;
 }

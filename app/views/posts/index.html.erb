@@ -1,13 +1,32 @@
-<div class="mui-container-fluid">
-  <h1>Latest Blogs</h1>
-
-  <div class="mui-row">
-      <% @posts.each do |post| %>
-        <div class="mui-col-xs-12 mui-col-md-4 cardStyle">
-            <div class="mui-panel my-3 text-center">
-              <%= link_to post.title, post_path(post), class: ' text-center post_title' %>
+<div class="mui-row">
+  <% @posts.each do |post| %>
+    <%= link_to post_path(post) do %>
+      <div class="mui-col-xs-12 mui-col-md-4 mb-5">
+          <div class="cardStyle card booking-card">
+            <div class="view overlay">
+              <%= image_tag post.image.url, class: 'card-img-top', alt: 'No Image' %>
+              <a href="#!">
+                <div class="mask rgba-white-slight"></div>
+              </a>
             </div>
+            <div class="card-body">
+              <h4 class="card-title font-weight-bolde">
+                <%= link_to post.title, post_path(post), class: ' text-center post_title' %>
+              </h4>
+              <p>
+                Tags:
+                  <% post.tags.each do |tag| %>
+                    <span class="trigger blue lighten-4">
+                      <%= link_to tag.name, tag_path(tag) %>
+                    </span>
+                  <% end %>
+              </p>
+              <p class="card-text"><%= post.body.truncate(30) %></p>
+              <hr class="my-2">
+              <i><%= link_to "Read More", post_path(post) %></i>
+            </div>
+          </div>
         </div>
-      <% end %>
-  </div>
+     <% end %>
+  <% end %>
 </div>
