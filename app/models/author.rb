@@ -1,5 +1,6 @@
 class Author < ApplicationRecord
   authenticates_with_sorcery!
+  has_many :posts
   validates_confirmation_of :password, message: "should match confirmation", if: :password
   validates :password, length: { minimum: 3 }, if: -> { new_record? || changes[:crypted_password] }
   validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }

@@ -15,15 +15,21 @@
                 <% end %>
             </p>
             <p><%= image_tag @post.image.url, :class => "BloPostImg" %></p>
+            <br>
             <p><%= @post.body %></p>
+            <br>
+            <p>Posted By: <b><%= @post.author.name %></b></p>
+            <p>Posted: <b><%= time_ago_in_words @post.created_at %> ago</b> </p>
             <br>
             <div class="mui-divider"></div>
             <br>
             <% if logged_in? %>
               <span><i class="fa fa-arrow-left fa-1x"></i> <%= link_to "Go Back To Posts", posts_path %></span>
               &nbsp; | &nbsp;
-              <span><i class="fa fa-edit fa-1x"></i> <%= link_to 'Edit This Post', edit_post_path(@post) %></span>  &nbsp; | &nbsp;
+              <span><i class="fa fa-edit fa-1x"></i> <%= link_to 'Edit This Post', edit_post_path(@post, current_user) %></span>  &nbsp; | &nbsp;
               <span><i class="fa fa-trash fa-1x"></i> <%= link_to 'Delete This Post', post_path(@post), method: :delete, data: {confirm: "Are You Sure?"} %></span>
+              <% else %>
+              <span><i class="fa fa-arrow-left fa-1x"></i> <%= link_to "Go Back To Posts", posts_path %></span>
             <% end %>
           </div>
           <br>
