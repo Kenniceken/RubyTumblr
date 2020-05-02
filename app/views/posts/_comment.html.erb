@@ -2,13 +2,24 @@
   <div class="mui-row">
       <div class="mui-col-xs-12 mui-col-md-10 mx-auto">
           <div class="mui-panel my-3 justify-content">
-            <p><strong>Comment By:</strong> <span class="text-primary"><%= comment.author_name %></span></p>
+            <p><strong>Comment By:</strong> <span class="text-primary"><%= comment.author.name %></span></p>
             <p class="comment"><%= comment.body %>
               <br>
               <span class="float-right mt-3">
                 <% if comment.created_at != nil %>
-                  Posted: <%= time_ago_in_words(comment.created_at) %> ago
-                <% end %></span>
+                    Commented: <%= time_ago_in_words(comment.created_at) %> ago
+
+                      <% if logged_in? %>
+                        <%= button_to "X", [comment.post, comment],
+                            method: :delete,
+                            onclick: "return confirm('Are you sure?')",
+                            remote: true,
+                            class: 'mui-btn mui-btn--small mui-btn--danger mui-btn--fab ml-5' %>
+
+                            <!-- %= button_to("Delete Post", {}, {:onclick => "return confirm('Are you sure?')", :method => :delete, :remote => true, :class => 'mui-btn mui-btn--danger'}) % -->
+                      <% end %>
+                <% end %>
+              </span>
             </p>
           </div>
           <div class="mui-divider"></div>

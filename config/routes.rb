@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     resources :comments
   end
   resources :tags
-
+  resources :comments
   resources :authors
 
   resources :author_sessions, only: [ :new, :create, :destroy ]

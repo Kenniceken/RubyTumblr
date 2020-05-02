@@ -24,12 +24,12 @@
             <div class="mui-divider"></div>
             <br>
             <% if logged_in? %>
-              <span><i class="fa fa-arrow-left fa-1x"></i> <%= link_to "Go Back To Posts", posts_path %></span>
-              &nbsp; | &nbsp;
-              <span><i class="fa fa-edit fa-1x"></i> <%= link_to 'Edit This Post', edit_post_path(@post, current_user) %></span>  &nbsp; | &nbsp;
-              <span><i class="fa fa-trash fa-1x"></i> <%= link_to 'Delete This Post', post_path(@post), method: :delete, data: {confirm: "Are You Sure?"} %></span>
-              <% else %>
-              <span><i class="fa fa-arrow-left fa-1x"></i> <%= link_to "Go Back To Posts", posts_path %></span>
+              <div class="btn-group">
+                <%= link_to "Back To Post", posts_path, :class => 'mui-btn mui-btn--small mui-btn--raised mr-1 rounded-0'  %>
+                <%= link_to 'Edit Post', edit_post_path(@post), :class => 'mui-btn mui-btn--small mui-btn--primary mr-2 rounded-0' %>
+                <%= button_to("Delete Post", {}, {:onclick => "return confirm('Are you sure?')", :method => :delete, :remote => true, :class => 'mui-btn mui-btn--small mui-btn--danger rounded-0'}) %>
+                  <!-- %= button_to("Delete Post", {}, {:onclick => "return confirm('Are you sure?')", :method => :delete, :remote => true, :class => 'mui-btn mui-btn--danger'}) % -->
+              </div>
             <% end %>
           </div>
           <br>
@@ -39,4 +39,15 @@
 <br>
 <h3>Comments (<%= @post.comments.size %>) </h3>
 <%= render partial: 'posts/comment', collection: @post.comments.reverse %>
-<%= render partial: 'comments/form' %>
+
+<div class="mui-container-fluid">
+  <div class="mui-row">
+      <div class="mui-col-xs-12 mui-col-md-10 mx-auto">
+        <% if logged_in? %>
+          <%= render partial: 'comments/form' %>
+          <% else %>
+          <h5><%= link_to "Login", login_path %> to Comment on this Post</h5>
+        <% end %>
+      </div>
+  </div>
+</div>

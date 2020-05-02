@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  author_name: MyString
   body: MyText
   post: one
+  author: one
 
 two:
-  author_name: MyString
   body: MyText
   post: two
+  author: two

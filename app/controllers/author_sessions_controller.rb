@@ -15,7 +15,7 @@ class AuthorSessionsController < ApplicationController
 
   def destroy
       logout
-      flash[:success] = 'See You Soon (:'
+      flash[:success] = "See You Soon (:"
       redirect_to login_path
   end
 end

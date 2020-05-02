@@ -11,8 +11,9 @@
         <%= f.text_area(:body, {:placeholder => 'Body', :required => true}) %>
       </div>
       <div class="mui-textfield">
-        <%= f.label :tag_list %><br />
-        <%= f.text_field :tag_list %>
+        <%= f.label :tag_list %>
+        <!-- %= f.text_field :tag_list % -->
+        <%= select_tag "Tag", options_from_collection_for_select(Tag.all, :id, :name), {:class=>'form-control', :prompt => 'Select Tag'}  %>
       </div>
       <p>
         <% if @post.image.exists? %>

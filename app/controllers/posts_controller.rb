@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   before_action :find_post, only: [:show, :edit, :update, :destroy, :post_owner]
   before_action :require_login, except: [:index, :show]
-  before_action :post_owner, only: [:edit, :update, :destroy]
+  before_action :post_owner, only: [:edit, :update, :destroy, :post_owner]
 
   def index
     @posts = Post.order(created_at: :desc)
@@ -15,13 +15,16 @@ class PostsController < ApplicationController
   end
 
   def new
-    @post = current_user.posts.build
+    @post = Post.new
+    #@post = current_user.posts.build
   end
 
   def create
+
     @post = current_user.posts.build(post_params)
+    #@post = current_user.posts.build(post_params)
     if @post.save
-      #flash[:success] = "Post '#{@post.title}' has been Created !!!"
+      flash[:success] = "Post '#{@post.title}' has been Created !!!"
       redirect_to @post
     else
       render 'new'
@@ -41,15 +44,15 @@ def update
     end
 end
 
-  def destroy
+def destroy
    @post = Post.find(params[:id])
-     if @post.destroy
-       flash[:success] = "Post '#{@post.title}' has been Successfully Deleted !!!"
-       redirect_to posts_path
-     else
-       flash[:danger] = "Post '#{@post.title}' Did not Deleted.. !!!"
-     end
+   if @post.destroy
+     flash[:success] = "Post '#{@post.title}' has been Successfully Deleted !!!"
+     redirect_to posts_path
+   else
+     flash[:danger] = "Post '#{@post.title}' Did not Deleted.. !!!"
    end
+end
 
   private
   def find_post
