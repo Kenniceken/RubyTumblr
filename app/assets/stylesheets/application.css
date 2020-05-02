@@ -11,6 +11,7 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require chosen
  *= require_tree .
  *= require_self
  */
@@ -8303,3 +8304,21 @@ a[data-toggle="collapse"] {
 
 .footer p {
   color: rgba(255, 255, 255, 0.5); }
+
+
+
+
+
+  .cardStyle {
+      display: block;
+      transitionDuration: 0.3s;
+  		height: 480px !important;
+  }
+
+  .card-img-top {
+  	height: 250px !important;
+  	width: 100%;
+  	background-repeat: no-repeat;
+  	background-position: center center;
+  	background-attachment: fixed;
+  }

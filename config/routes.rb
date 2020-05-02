@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :posts do
     resources :comments
   end
-  resources :tags
+  resources :tags, only: [:index, :show]
   resources :comments
   resources :authors
 

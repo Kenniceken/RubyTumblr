@@ -13,8 +13,8 @@
               <h4 class="card-title font-weight-bolde">
                 <%= link_to post.title, post_path(post), class: ' text-center post_title' %>
               </h4>
+              Tags:
               <p>
-                Tags:
                   <% post.tags.each do |tag| %>
                     <span class="trigger blue lighten-4">
                       <%= link_to tag.name, tag_path(tag) %>

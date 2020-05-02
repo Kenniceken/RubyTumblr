@@ -4,8 +4,9 @@ class PostsController < ApplicationController
   before_action :post_owner, only: [:edit, :update, :destroy, :post_owner]
 
   def index
-    @posts = Post.order(created_at: :desc)
+    #@posts = Post.order(created_at: :DESC)
     #@posts = Post.where(author_id: current_user)
+    params[:tag] ? @posts = Post.tagged_with(params[:tag]) : @posts = Post.order(created_at: :DESC)
   end
 
   def show
@@ -20,7 +21,6 @@ class PostsController < ApplicationController
   end
 
   def create
-
     @post = current_user.posts.build(post_params)
     #@post = current_user.posts.build(post_params)
     if @post.save
@@ -68,6 +68,6 @@ end
 
 
   def post_params
-    params.require(:post).permit(:title, :body, :image, :author)
+    params.require(:post).permit(:title, :body, :image, :author, :tag_list, :tag, { tag_ids: [] }, :tag_ids)
   end
 end

@@ -39,6 +39,15 @@
        </div>
      </div>
 
+
+     <script>
+       $(document).on('ready page:load', function () {
+         $('#post_tag_ids').chosen({
+           allow_single_deselect: true,
+           width: '100%'
+         })
+       });
+     </script>
     <%= javascript_include_tag "jquery.min.js" %>
     <%= javascript_include_tag "popper.js" %>
     <%= javascript_include_tag "bootstrap.min.js" %>

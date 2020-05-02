@@ -3,7 +3,7 @@
       <div class="alert alert-danger" role="alert"> <%= msg %> </div>
   <% end %>
 <% end %>
-  <%= form_for @post, :html => {multipart: true, :class => 'mui-form'} do |f|  %>
+  <%= simple_form_for @post, :html => {multipart: true, :class => 'mui-form'} do |f|  %>
       <div class="mui-textfield">
         <%= f.text_field(:title, {:placeholder => 'Title', :required => true}) %>
       </div>
@@ -11,9 +11,16 @@
         <%= f.text_area(:body, {:placeholder => 'Body', :required => true}) %>
       </div>
       <div class="mui-textfield">
-        <%= f.label :tag_list %>
-        <!-- %= f.text_field :tag_list % -->
-        <%= select_tag "Tag", options_from_collection_for_select(Tag.all, :id, :name), {:class=>'form-control', :prompt => 'Select Tag'}  %>
+        <!-- %= f.label :tag_list %-->
+        <%= f.text_field(:tag_list, {:placeholder => 'Add New Tag List' }) %>
+        <p>
+          <span><i><small>Or Select From Tag IDs Below</small></i></span>
+        </p>
+      </div>
+      <div class="mui-custom-select">
+        <p>
+         <%= f.input :tag_ids, as: :select, collection: Tag.order(:name), label_method: :name, input_html: {multiple: true, :class => 'chosen-select mui-select'} %>
+       </p>
       </div>
       <p>
         <% if @post.image.exists? %>
@@ -23,6 +30,7 @@
         <%= f.file_field :image %>
       </p>
       <br>
+      <p>
         <span><%= f.submit({:class => 'mui-btn mui-btn--primary'}) %></span>
           &nbsp;
         <span><%= link_to "Go Back To Posts", posts_path, {:class => 'mui-btn mui-btn--raised'} %></span>
