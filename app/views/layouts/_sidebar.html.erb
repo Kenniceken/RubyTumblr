@@ -14,14 +14,18 @@
 							 <% else %>
 							 </li>
 						 <% end %>
-					<li>
-						<% if logged_in? %>
-							 <%= link_to "Logout", logout_path %>
-						 <% else %>
-							 <%= link_to "Login", login_path %>
-							 <%= link_to "Register", new_author_path %>
-						 <% end %>
-					</li>
+					<% if logged_in? %>
+							<li class="<%= 'active' if current_page?(logout_path) %>">
+								<%= link_to "Logout", logout_path %>
+							</li>
+							<% else %>
+							<li class="<%= 'active' if current_page?(login_path) %>">
+								<%= link_to "Login", login_path %>
+							</li>
+							<li class="<%= 'active' if current_page?(new_author_path) %>">
+								<%= link_to "Register", new_author_path %>
+							</li>
+					<% end %>
         </ul>
 
 					<div class="footer">
