@@ -4,17 +4,25 @@
   <div class="mui-row">
       <div class="mui-col-xs-12 mui-col-md-10 mx-auto">
           <div class="mui-panel my-3 justify-content">
-            <h1><%= @post.title %></h1>
+            <h1 class="postTitle"><%= @post.title %></h1>
+            <br>
             <p>
               Tags:
-              <span class="trigger blue lighten-4">
-                <!-- %= link_to tag.name, tag_path(tag) %-->
-                <%= raw @post.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ') %>
-              </span>
+              <!-- <span class="trigger blue lighten-4"> -->
+                <!--%= link_to tag.name, tag_path(tag) %-->
+                <!--%= raw @post.tags.map(&:name).map { |tag| link_to tag, tag_path(tag) }.join(', ') %-->
+
+              <!-- </span> -->
+              <% @post.tags.each do |tag| %>
+                <span class="trigger blue lighten-4">
+                  <%= link_to tag.name, tag_path(tag) %>
+                </span>
+              <% end %>
             </p>
+            <br>
             <p><%= image_tag @post.image.url, :class => "BloPostImg" %></p>
             <br>
-            <p><%= @post.body %></p>
+            <p class="showBody"><%= @post.body %></p>
             <br>
             <p>Posted By: <b><%= @post.author.name %></b></p>
             <p>Posted: <b><%= time_ago_in_words @post.created_at %> ago</b> </p>
