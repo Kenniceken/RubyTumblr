@@ -237,6 +237,7 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
+  autoprefixer-rails
   bcrypt (~> 3.1.7)
   bootstrap (~> 4.4.1)
   byebug
@@ -256,6 +257,7 @@ DEPENDENCIES
   selenium-webdriver
   simple_form
   sorcery
+  sprockets-rails (~> 3.0, >= 3.0.4)
   turbolinks (~> 5)
   tzinfo-data
   uglifier (>= 1.3.0)
