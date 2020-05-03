@@ -15,11 +15,47 @@
  *= require chosen
  *= require bootstrap
  *= require posts
+ *= require mixins
+ *= require variables
+ *= require custom
+ *= require normalize
+
  */
 
 /* @import 'bootstrap'; */
 
 /* @import 'posts'; */
+
+
+
+$white:    #fff !default;
+$gray-100: #f8f9fa !default;
+$gray-200: #e9ecef !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #ced4da !default;
+$gray-500: #adb5bd !default;
+$gray-600: #6c757d !default;
+$gray-700: #495057 !default;
+$gray-800: #343a40 !default;
+$gray-900: #212529 !default;
+$black:    #000 !default;
+
+$grays: () !default;
+
+$grays: map-merge(
+  (
+    "100": $gray-100,
+    "200": $gray-200,
+    "300": $gray-300,
+    "400": $gray-400,
+    "500": $gray-500,
+    "600": $gray-600,
+    "700": $gray-700,
+    "800": $gray-800,
+    "900": $gray-900
+  ),
+  $grays
+);
 
 :root {
   --blue: #007bff;
@@ -8306,9 +8342,64 @@ a[data-toggle="collapse"] {
 .footer p {
   color: rgba(255, 255, 255, 0.5); }
 
+  .cardStyle {
+      display: block;
+      transitionDuration: 0.3s;
+  		height: 480px !important;
+  }
+
+  .card-img-top {
+  	height: 250px !important;
+  	width: 100%;
+  	background-repeat: no-repeat;
+  	background-position: center center;
+  	background-attachment: fixed;
+  }
+
+  /* Posts scss starts here */
+
+  $font-primary: 'Exo 2', sans-serif;
+  $primary: #f8b739;
 
 
+  h1 {
+  	font-family: $font-primary !important;
+  }
 
+  body{
+  	font-family: $font-primary;
+  	font-size: 14px;
+  	line-height: 1.8;
+  	font-weight: normal;
+  	background: #fafafa;
+  	color: lighten($black,50%);
+  }
+
+  a {
+  	transition: .3s all ease;
+  	color: $primary;
+  	&:hover, &:focus {
+  		text-decoration: none !important;
+  		outline: none !important;
+  		box-shadow: none;
+  	}
+  }
+  button {
+  	transition: .3s all ease;
+  	&:hover, &:focus {
+  		text-decoration: none !important;
+  		outline: none !important;
+  		box-shadow: none !important;
+  	}
+  }
+
+  h1, h2, h3, h4, h5,
+  .h1, .h2, .h3, .h4, .h5 {
+  	line-height: 1.5;
+  	font-weight: 400;
+  	font-family: $font-primary;
+  	color: $black;
+  }
 
   .cardStyle {
       display: block;
@@ -8323,3 +8414,79 @@ a[data-toggle="collapse"] {
   	background-position: center center;
   	background-attachment: fixed;
   }
+
+  .trigger {
+  padding: 1px 10px;
+  font-size: 12px;
+  font-weight: 400;
+  border-radius: 10px;
+  background-color: #eee;
+  color: #212121 !important;
+  display: inline-block;
+  margin: 2px 5px;
+  }
+
+  .hoverable, .trigger {
+  transition: box-shadow 0.55s;
+  box-shadow: 0;
+  }
+
+  .hoverable:hover, .trigger:hover {
+  transition: box-shadow 0.45s;
+  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+
+  .card-img-top {
+  	height: 210px !important;
+  	width: 100%;
+  }
+
+  .BloPostImg {
+  	border-radius: 20px;
+  	height: 50%;
+  	width: 50%;
+  }
+
+  /* Posts scss ends here */
+
+
+/* custom scss starts here */
+
+body {
+  font-family: "Exo 2", sans-serif !important;
+  line-height:1;
+  color:black;
+  background:white;
+}
+
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td {
+  margin:0;
+  padding:0;
+  border:0;
+  outline:0;
+  font-weight:inherit;
+  font-style:inherit;
+  font-size:100%;
+  font-family:inherit;
+  vertical-align:baseline;
+}
+
+ol,ul {
+  list-style:none;
+}
+
+table {
+  border-collapse:separate;
+  border-spacing:0;
+  vertical-align:middle;
+}
+caption,th,td {
+  text-align:left;
+  font-weight:normal;
+  vertical-align:middle;
+}
+q,blockquote {
+  quotes:"" "";
+}
+
+/* custom scss ends here */
