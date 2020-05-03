@@ -2,12 +2,18 @@
 				<div class="p-4 pt-5">
 		  		<a class="img logo rounded-circle mb-5" <%= link_to image_tag("logo.png", alt: "logo"), '/', class: 'img' %></a>
 				<ul class="list-unstyled components mb-5">
-          <li class="active">
+          <li class="<%= 'active' if current_page?(root_path) %>">
             <%= link_to "Home", root_path %>
           </li>
-          <li class="">
+          <li class="<%= 'active' if current_page?(posts_path) %>">
             <%= link_to "Posts", posts_path %>
           </li>
+						<% if logged_in? %>
+							<li class="<%= 'active' if current_page?(new_post_path) %>">
+								 <%= link_to "Create New Post", new_post_path %>
+							 <% else %>
+							 </li>
+						 <% end %>
 					<li>
 						<% if logged_in? %>
 							 <%= link_to "Logout", logout_path %>

@@ -247,7 +247,7 @@ DEPENDENCIES
   jbuilder (~> 2.5)
   jquery-rails
   paperclip!
-  pg (~> 0.20)
+  pg (>= 0.18, < 2.0)
   popper_js (~> 1.14.5)
   puma (~> 3.7)
   rails (~> 5.1.7)
